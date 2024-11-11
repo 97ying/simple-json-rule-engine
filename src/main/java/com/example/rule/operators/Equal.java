@@ -19,7 +19,7 @@ public class Equal extends Operator {
     @Override
     public MatchResult match(Object objValue) {
         if (condition instanceof SimpleCondition simpleCondition) {
-            boolean isEqual = Objects.equals(simpleCondition.value, objValue);
+            boolean isEqual = Objects.equals(simpleCondition.getValue(), objValue);
             return new MatchResult(isEqual, objValue);
         }
         throw new IllegalArgumentException("Condition must be of type SimpleCondition");

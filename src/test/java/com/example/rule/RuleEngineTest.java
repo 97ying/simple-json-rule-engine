@@ -83,8 +83,8 @@ public class RuleEngineTest {
                 "        }" +
                 "    }";
 
-        final Map objMap = objectMapper.readValue(obj, Map.class);
-        final Map ruleMap = objectMapper.readValue(rule, Map.class);
+        final Map<?, ?> objMap = objectMapper.readValue(obj, Map.class);
+        final Map<?, ?> ruleMap = objectMapper.readValue(rule, Map.class);
 
         RuleEngine engine = new RuleEngine(List.of(ruleMap));
 
@@ -121,8 +121,8 @@ public class RuleEngineTest {
                 "        }" +
                 "    }";
 
-        final Map objMap = objectMapper.readValue(obj, Map.class);
-        final Map ruleMap = objectMapper.readValue(rule, Map.class);
+        final Map<?, ?> objMap = objectMapper.readValue(obj, Map.class);
+        final Map<?, ?> ruleMap = objectMapper.readValue(rule, Map.class);
 
         RuleEngine engine = new RuleEngine(List.of(ruleMap));
 
@@ -166,8 +166,8 @@ public class RuleEngineTest {
                 "    }";
 
 
-        final Map objMap = objectMapper.readValue(obj, Map.class);
-        final Map ruleMap = objectMapper.readValue(rule, Map.class);
+        final Map<?, ?> objMap = objectMapper.readValue(obj, Map.class);
+        final Map<?, ?> ruleMap = objectMapper.readValue(rule, Map.class);
 
         RuleEngine engine = new RuleEngine(List.of(ruleMap));
 

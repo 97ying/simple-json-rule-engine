@@ -20,8 +20,8 @@ public class GreaterThanInclusive extends Operator {
         if (condition instanceof SimpleCondition simpleCondition) {
             boolean isGreaterThanInclusive = false;
 
-            if (simpleCondition.value instanceof Number && objValue instanceof Number) {
-                isGreaterThanInclusive = ((Number) objValue).doubleValue() >= ((Number) simpleCondition.value).doubleValue();
+            if (simpleCondition.getValue() instanceof Number conditionValue && objValue instanceof Number objNumberValue) {
+                isGreaterThanInclusive = objNumberValue.doubleValue() >= conditionValue.doubleValue();
             }
 
             return new MatchResult(isGreaterThanInclusive, objValue);

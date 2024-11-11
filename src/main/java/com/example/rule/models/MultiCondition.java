@@ -15,7 +15,7 @@ public class MultiCondition extends Condition {
         int conditionCount = 0;
         if (data.containsKey("any") && !((List<?>) data.get("any")).isEmpty()) {
             conditionCount++;
-            this.any = validateConditions((List<?>)data.get("any"));
+            this.any = validateConditions((List<?>) data.get("any"));
         }
         if (data.containsKey("all") && !((List<?>) data.get("all")).isEmpty()) {
             conditionCount++;
@@ -41,7 +41,7 @@ public class MultiCondition extends Condition {
             try {
                 conditionDataList.add(new SimpleCondition((Map<?, ?>) conditionData));
             } catch (IllegalArgumentException e) {
-                conditionDataList.add(new MultiCondition((Map<?, ?>)conditionData));
+                conditionDataList.add(new MultiCondition((Map<?, ?>) conditionData));
             }
         });
 

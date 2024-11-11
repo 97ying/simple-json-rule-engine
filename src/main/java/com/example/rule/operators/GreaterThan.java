@@ -19,8 +19,8 @@ public class GreaterThan extends Operator {
         if (condition instanceof SimpleCondition simpleCondition) {
             boolean isGreaterThan = false;
 
-            if (simpleCondition.value instanceof Number && objValue instanceof Number) {
-                isGreaterThan = ((Number) objValue).doubleValue() > ((Number) simpleCondition.value).doubleValue();
+            if (simpleCondition.getValue() instanceof Number conditionValue && objValue instanceof Number objNumberValue) {
+                isGreaterThan = objNumberValue.doubleValue() > conditionValue.doubleValue();
             }
 
             return new MatchResult(isGreaterThan, objValue);

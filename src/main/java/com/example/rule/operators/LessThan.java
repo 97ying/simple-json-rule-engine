@@ -19,8 +19,8 @@ public class LessThan extends Operator {
         if (condition instanceof SimpleCondition simpleCondition) {
             boolean isLessThan = false;
 
-            if (simpleCondition.value instanceof Number && objValue instanceof Number) {
-                isLessThan = ((Number) objValue).doubleValue() < ((Number) simpleCondition.value).doubleValue();
+            if (simpleCondition.getValue() instanceof Number conditionValue && objValue instanceof Number objNumber) {
+                isLessThan = objNumber.doubleValue() < conditionValue.doubleValue();
             }
 
             return new MatchResult(isLessThan, objValue);

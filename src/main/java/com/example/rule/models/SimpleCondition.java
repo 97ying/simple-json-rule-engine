@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 public class SimpleCondition extends Condition {
     private final Operator operator;
     private final JSONPath path;
-    public Object value;
+    private final Object value;
     //    private Map<String, Object> params;
     private Object matchDetail;
 
@@ -58,14 +58,22 @@ public class SimpleCondition extends Condition {
     @Override
     public void evaluate(Object obj) {
         try {
-            Map<String, Object> objMap = (Map<String, Object>) obj;
+            Map<?, ?> objMap = (Map<?, ?>) obj;
             Object pathObj = (path != null) ? path.getValueFrom(objMap) : objMap;
             MatchResult matchResult = operator.match(pathObj);
-            this.match = matchResult.matched;
-            this.matchDetail = objToDict(matchResult.details);
+            this.match = matchResult.matched();
+            this.matchDetail = objToDict(matchResult.details());
         } catch (JSONPathValueNotFound e) {
             this.match = false;
             this.matchDetail = e.getMessage();
         }
+    }
+
+    public Object getValue() {
+        return value;
+    }
+
+    public Object getMatchDetail() {
+        return matchDetail;
     }
 }

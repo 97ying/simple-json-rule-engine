@@ -14,7 +14,7 @@ public class Rule {
     public Rule(Map<?, ?> data) {
         this.name = validateValue(data.get("name"), String.class, "name");
         this.description = validateValue(data.get("description"), String.class, "description", true);
-        this.extra = (Map<?, ?>)validateValue(data.get("extra"), Map.class, "extra", true);
+        this.extra = (Map<?, ?>) validateValue(data.get("extra"), Map.class, "extra", true);
         this.event = validateValue(data.get("event"), Map.class, "event", true);
 
         this.conditionsData = validateValue(data.get("conditions"), Map.class, "conditions");

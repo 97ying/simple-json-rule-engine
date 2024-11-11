@@ -19,8 +19,8 @@ public class NotContains extends Operator {
         if (condition instanceof SimpleCondition simpleCondition) {
             boolean notContains = false;
 
-            if (objValue instanceof String && simpleCondition.value instanceof String) {
-                notContains = !((String) objValue).contains((String) simpleCondition.value);
+            if (objValue instanceof String objStringValue && simpleCondition.getValue() instanceof String conditionValue) {
+                notContains = !objStringValue.contains(conditionValue);
             }
 
             return new MatchResult(notContains, objValue);

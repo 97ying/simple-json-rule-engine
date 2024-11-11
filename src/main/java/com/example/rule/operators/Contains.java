@@ -21,8 +21,8 @@ public class Contains extends Operator {
         if (condition instanceof SimpleCondition simpleCondition) {
             boolean contains = false;
 
-            if (objValue instanceof List && simpleCondition.value instanceof String) {
-                contains = ((List<?>) objValue).contains(simpleCondition.value);
+            if (objValue instanceof List<?> objListValue && simpleCondition.getValue() instanceof String conditionValue) {
+                contains = objListValue.contains(conditionValue);
             }
 
             return new MatchResult(contains, objValue);

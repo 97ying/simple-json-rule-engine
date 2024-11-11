@@ -21,8 +21,8 @@ public class NotIn extends Operator {
         if (condition instanceof SimpleCondition simpleCondition) {
             boolean isNotIn = false;
 
-            if (simpleCondition.value instanceof Collection) {
-                isNotIn = !((Collection<?>) simpleCondition.value).contains(objValue);
+            if (simpleCondition.getValue() instanceof Collection<?> conditionValue) {
+                isNotIn = !conditionValue.contains(objValue);
             }
 
             return new MatchResult(isNotIn, objValue);

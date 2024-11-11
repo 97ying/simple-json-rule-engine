@@ -21,8 +21,8 @@ public class In extends Operator {
         if (condition instanceof SimpleCondition simpleCondition) {
             boolean isIn = false;
 
-            if (simpleCondition.value instanceof Collection) {
-                isIn = ((Collection<?>) simpleCondition.value).contains(objValue);
+            if (simpleCondition.getValue() instanceof Collection<?> conditionValue) {
+                isIn = conditionValue.contains(objValue);
             }
 
             return new MatchResult(isIn, objValue);

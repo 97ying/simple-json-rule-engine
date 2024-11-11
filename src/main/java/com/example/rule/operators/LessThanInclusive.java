@@ -19,8 +19,8 @@ public class LessThanInclusive extends Operator {
         if (condition instanceof SimpleCondition simpleCondition) {
             boolean isLessThanInclusive = false;
 
-            if (simpleCondition.value instanceof Number && objValue instanceof Number) {
-                isLessThanInclusive = ((Number) objValue).doubleValue() <= ((Number) simpleCondition.value).doubleValue();
+            if (simpleCondition.getValue() instanceof Number conditionValue && objValue instanceof Number objNumberValue) {
+                isLessThanInclusive = objNumberValue.doubleValue() <= conditionValue.doubleValue();
             }
 
             return new MatchResult(isLessThanInclusive, objValue);
