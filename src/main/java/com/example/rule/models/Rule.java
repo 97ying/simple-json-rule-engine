@@ -5,16 +5,16 @@ import java.util.Map;
 public class Rule {
     private final String name;
     private final String description;
-    private final Map<String, Object> extra;
-    private final Map<String, Object> event;
-    private final Map<String, Object> conditionsData;
+    private final Map<?, ?> extra;
+    private final Map<?, ?> event;
+    private final Map<?, ?> conditionsData;
     private final MultiCondition conditions;
 
 
-    public Rule(Map<String, Object> data) {
+    public Rule(Map<?, ?> data) {
         this.name = validateValue(data.get("name"), String.class, "name");
         this.description = validateValue(data.get("description"), String.class, "description", true);
-        this.extra = validateValue(data.get("extra"), Map.class, "extra", true);
+        this.extra = (Map<?, ?>)validateValue(data.get("extra"), Map.class, "extra", true);
         this.event = validateValue(data.get("event"), Map.class, "event", true);
 
         this.conditionsData = validateValue(data.get("conditions"), Map.class, "conditions");

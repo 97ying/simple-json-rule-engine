@@ -17,7 +17,7 @@ public class SimpleCondition extends Condition {
     //    private Map<String, Object> params;
     private Object matchDetail;
 
-    public SimpleCondition(Map<String, Object> data) {
+    public SimpleCondition(Map<?, ?> data) {
         super();
         this.operator = validateOperator(data);
         this.path = validatePath(data);
@@ -26,14 +26,14 @@ public class SimpleCondition extends Condition {
         this.matchDetail = null;
     }
 
-    private JSONPath validatePath(Map<String, Object> data) {
+    private JSONPath validatePath(Map<?, ?> data) {
         if (data.containsKey("path")) {
             return new JSONPath((String) data.get("path"));
         }
         return null;
     }
 
-    private Operator validateOperator(Map<String, Object> data) {
+    private Operator validateOperator(Map<?, ?> data) {
         if (!data.containsKey("operator")) {
             throw new IllegalArgumentException("Operator attribute missing");
         }

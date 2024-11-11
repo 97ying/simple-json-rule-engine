@@ -9,21 +9,21 @@ public class MultiCondition extends Condition {
     private List<Condition> any;
     private Condition not;
 
-    public MultiCondition(Map<String, Object> data) {
+    public MultiCondition(Map<?, ?> data) {
         super();
 
         int conditionCount = 0;
         if (data.containsKey("any") && !((List<?>) data.get("any")).isEmpty()) {
             conditionCount++;
-            this.any = validateConditions((List<Map<String, Object>>) data.get("any"));
+            this.any = validateConditions((List<?>)data.get("any"));
         }
         if (data.containsKey("all") && !((List<?>) data.get("all")).isEmpty()) {
             conditionCount++;
-            this.all = validateConditions((List<Map<String, Object>>) data.get("all"));
+            this.all = validateConditions((List<?>) data.get("all"));
         }
         if (data.containsKey("not") && !((Map<?, ?>) data.get("not")).isEmpty()) {
             conditionCount++;
-            this.not = validateNotCondition((Map<String, Object>) data.get("not"));
+            this.not = validateNotCondition((Map<?, ?>) data.get("not"));
         }
 
         if (conditionCount != 1) {
@@ -31,7 +31,7 @@ public class MultiCondition extends Condition {
         }
     }
 
-    private List<Condition> validateConditions(List<Map<String, Object>> data) {
+    private List<Condition> validateConditions(List<?> data) {
         if (data == null || data.isEmpty()) {
             return null;
         }
@@ -39,16 +39,16 @@ public class MultiCondition extends Condition {
 
         data.forEach(conditionData -> {
             try {
-                conditionDataList.add(new SimpleCondition(conditionData));
+                conditionDataList.add(new SimpleCondition((Map<?, ?>) conditionData));
             } catch (IllegalArgumentException e) {
-                conditionDataList.add(new MultiCondition(conditionData));
+                conditionDataList.add(new MultiCondition((Map<?, ?>)conditionData));
             }
         });
 
         return conditionDataList;
     }
 
-    private Condition validateNotCondition(Map<String, Object> data) {
+    private Condition validateNotCondition(Map<?, ?> data) {
         if (data == null || data.isEmpty()) {
             return null;
         }

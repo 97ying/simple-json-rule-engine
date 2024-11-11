@@ -10,13 +10,13 @@ public class RuleEngine {
 
     private final List<Rule> rules;
 
-    public RuleEngine(List<Map<String, Object>> rules) {
+    public RuleEngine(List<Map<?, ?>> rules) {
         this.rules = deserializeRules(rules);
     }
 
-    private List<Rule> deserializeRules(List<Map<String, Object>> rulesData) {
+    private List<Rule> deserializeRules(List<Map<?, ?>> rulesData) {
         List<Rule> auxRules = new ArrayList<>();
-        for (Map<String, Object> ruleData : rulesData) {
+        for (Map<?, ?> ruleData : rulesData) {
             auxRules.add(new Rule(ruleData));
         }
         return auxRules;
