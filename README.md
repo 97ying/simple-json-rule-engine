@@ -46,4 +46,4 @@ You can use the JUnit to test the rule engine
 ```
 
 ## Rule Format
-Find more info about the rules here.
+Find more info about the rules [here](doc/rules.md).
